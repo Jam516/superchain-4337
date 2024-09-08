@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+    - name: superchain_4337_base_bundle_transactions
+      description: Bundle transactions on Base
+      columns:
+          - name: hash
+            description: transaction hash
+            # tests:
+            #     - unique
+            #     - not_null
