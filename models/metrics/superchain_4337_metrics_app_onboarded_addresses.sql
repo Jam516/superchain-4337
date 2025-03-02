@@ -13,8 +13,8 @@ WITH earliest_userop AS (
     PARTITION BY sender
     ORDER BY block_timestamp
   ) AS rn
-  FROM op-4337.dbt_kofi.superchain_4337_userops u
-  INNER JOIN op-4337.dbt_kofi.superchain_4337_app_labels l
+  FROM {{ ref('superchain_4337_userops') }} u
+  INNER JOIN {{ ref('superchain_4337_app_labels') }} l
     ON l.address = u.called_contract
     AND block_month < TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), MONTH)
 )
