@@ -58,6 +58,8 @@ WITH base AS (
 SELECT
 chain
 , block_timestamp
+, DATE_TRUNC(TIMESTAMP_SECONDS(block_timestamp), DAY) AS block_date
+, DATE_TRUNC(TIMESTAMP_SECONDS(block_timestamp), MONTH) AS block_month
 , transaction_hash
 , op_hash
 , sender
@@ -78,4 +80,3 @@ chain
     end as value
 FROM joined
 WHERE first_call = 1 
-LIMIT 10
